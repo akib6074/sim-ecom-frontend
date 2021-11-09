@@ -1,0 +1,13 @@
+<svg height="48" viewBox="0 0 48 48" width="48" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="clip-checkbox">
+      <rect height="48" width="48"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#clip-checkbox)" id="checkbox">
+    <g data-name="Rectangle 233" fill="#fff" id="Rectangle_233" stroke="#06b37b" stroke-width="1">
+      <rect height="48" rx="1" stroke="none" width="48"/>
+      <rect fill="none" height="47" rx="0.5" width="47" x="0.5" y="0.5"/>
+    </g>
+  </g>
+</svg>

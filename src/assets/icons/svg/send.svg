@@ -1,0 +1,12 @@
+<svg height="48" viewBox="0 0 48 48" width="48" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="clip-send">
+      <rect height="48" width="48"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#clip-send)" id="send">
+    <path d="M3.022,44.573l46.73-20.037L3.022,4.5,3,20.084l33.394,4.453L3,28.989Z" data-name="Icon material-send"
+          fill="#c9c9c9" id="Icon_material-send"
+          transform="translate(-1.752 0.413)"/>
+  </g>
+</svg>

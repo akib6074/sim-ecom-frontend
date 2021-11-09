@@ -1,0 +1,260 @@
+<div class="invoice">
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <div class="invoice-top-section" fxFlex="80" fxFlex.lt-sm="100"></div>
+  </div>
+
+  <div id="contentToConvert" fxLayout="column" fxLayoutGap="1.5rem">
+    <div class="heading-section" fxLayout="row" fxLayoutAlign="center center">
+      <div fxFlex="70" fxFlex.lt-sm="100">
+        <div
+          fxLayout="row"
+          fxLayoutAlign="space-between center"
+          fxLayoutGap="3rem"
+        >
+          <p class="invoice-view">INVOICE</p>
+
+          <div>
+            <img
+              alt="logo of ebonear"
+              src="../../../../../../assets/icons/png/Ebonear_logo_green.png"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <div fxFlex="70" fxFlex.lt-sm="100">
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <div>
+            <p>Company Name : {{ companyInfo.name }}</p>
+            <p>Address : {{ companyInfo.address }}</p>
+            <p>Phone No : {{ companyInfo.phone }}</p>
+            <p>E-mail :{{ companyInfo.email }}</p>
+          </div>
+
+          <div
+            class="date-section"
+            fxLayout="column"
+            fxLayoutAlign="center end"
+          >
+            <table>
+              <tr>
+                <th style="width: 60%"></th>
+                <th></th>
+              </tr>
+              <tr>
+                <td>INVOICE ID</td>
+                <td>{{ invoiceDetails?.invoice?.id }}</td>
+              </tr>
+              <tr>
+                <td>Payment Status</td>
+                <td>{{ invoiceDetails?.invoice?.status }}</td>
+              </tr>
+              <tr>
+                <td>INVOICE DATE</td>
+                <td>{{ invoiceDetails?.invoice?.createAt | date }}</td>
+              </tr>
+              <tr>
+                <td style="background-color: #9c9c9c">AMOUNT</td>
+                <td style="background-color: #9c9c9c">
+                  {{ grandTotal }}
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <div fxFlex="70" fxFlex.lt-sm="100">
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <div fxLayout="column">
+            <span class="billing-section">BILL TO</span>
+            <hr class="line-size" />
+            <span
+              >Name : {{ invoiceDetails?.billingAddress?.firstname }}
+              {{ invoiceDetails?.billingAddress?.lastname }}</span
+            >
+            <span>Mobile No: {{ invoiceDetails?.billingAddress?.phone }}</span>
+            <span>Address : {{ invoiceDetails?.billingAddress?.address }}</span>
+          </div>
+
+          <div class="date-section" fxLayout="column" fxLayoutAlign="start end">
+            <p class="billing-section">SHIP TO</p>
+            <hr class="line-size" />
+            <table>
+              <tr>
+                <th style="width: 80%"></th>
+                <th></th>
+              </tr>
+              <tr>
+                <td>Name :</td>
+                <td>
+                  {{ invoiceDetails?.shippingAddress?.firstname }}
+                  {{ invoiceDetails?.shippingAddress?.lastname }}
+                </td>
+              </tr>
+              <tr>
+                <td>Mobile No:</td>
+                <td>
+                  {{ invoiceDetails?.shippingAddress?.phone }}
+                </td>
+              </tr>
+              <tr>
+                <td>Address :</td>
+                <td>
+                  {{ invoiceDetails?.shippingAddress?.address }}
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="table-section" fxLayoutAlign="center center">
+      <div fxFlex="70" fxFlex.lt-sm="100">
+        <table style="width: 100%">
+          <tr>
+            <th style="height: 2rem; width: 7rem">Image</th>
+            <th>Product Name</th>
+            <th>Unit price</th>
+            <th style="width: 5rem">Quantity</th>
+            <th>Total</th>
+          </tr>
+
+          <tr *ngFor="let orderDetail of orderDetails">
+            <td>
+              <img
+                src="{{ orderDetail?.product?.image?.cover }}"
+                height="20%"
+                width="20%"
+              />
+            </td>
+            <td>{{ orderDetail?.product?.name }}</td>
+            <td>
+              {{ orderDetail?.price | number: "1.2-2" | currency: "BDT" }}
+            </td>
+            <td>{{ orderDetail?.quantity }}</td>
+            <td>
+              {{ orderDetail?.price * orderDetail?.quantity }}
+            </td>
+          </tr>
+
+          <tr>
+            <td class="table-cell"></td>
+            <td class="table-cell"></td>
+            <td class="table-cell"></td>
+            <td class="table-cell">Sub-TOTAL :</td>
+            <td class="table-cell-final">
+              {{ subTotal }}
+            </td>
+          </tr>
+
+          <tr>
+            <td class="table-cell"></td>
+            <td class="table-cell"></td>
+            <td class="table-cell"></td>
+            <td class="table-cell">VAT:</td>
+            <td class="table-cell-final">
+              {{ totalVat }}
+            </td>
+          </tr>
+
+          <tr>
+            <td class="table-cell"></td>
+            <td class="table-cell"></td>
+            <td class="table-cell"></td>
+            <td class="table-cell">Discount:</td>
+            <td class="table-cell-final">
+              {{ totalDiscount }}
+            </td>
+          </tr>
+
+          <tr>
+            <td class="table-cell"></td>
+            <td class="table-cell"></td>
+            <td class="table-cell"></td>
+            <td class="table-cell">Shipping Charge:</td>
+            <td class="table-cell-final">
+              {{ shippingCharge }}
+            </td>
+          </tr>
+
+          <tr>
+            <td class="table-cell"></td>
+            <td class="table-cell"></td>
+            <td class="table-cell"></td>
+            <td class="table-cell">Additional Shipping charge:</td>
+            <td class="table-cell-final">
+              {{ totalAdditionalShippingCharge }}
+            </td>
+          </tr>
+
+          <tr>
+            <td class="table-cell"></td>
+            <td class="table-cell"></td>
+            <td class="table-cell"></td>
+            <td class="table-cell">Grand Total:</td>
+            <td class="table-cell-final">
+              {{ grandTotal }}
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="invoice-bottom-section"
+    fxLayout="row"
+    fxLayoutAlign="center center"
+  >
+    <div fxFlex="70"></div>
+  </div>
+
+  <mat-card>
+    <mat-card-content
+      class="bottom-options"
+      fxLayout="column"
+      fxLayout.gt-sm="row"
+      fxLayoutAlign="center center"
+      fxLayoutGap="20px"
+    >
+      <div fxLayout="column" fxLayoutAlign="center center">
+        <h2>Pay Now</h2>
+        <div>
+          <button
+            color="primary"
+            endpoint=""
+            id="sslczPayBtn"
+            mat-raised-button
+            order=""
+            postdata=""
+            token=""
+            type="button"
+          >
+            <span class="text-white">PAY WITH SSLCOMMERZ </span>
+          </button>
+        </div>
+      </div>
+
+      <div fxLayout="column" fxLayoutAlign="center center">
+        <h2>DOWNLOAD INVOICE</h2>
+        <div>
+          <button
+            (click)="convertToPDF()"
+            class="invoiceButton"
+            color="primary"
+            mat-raised-button
+            type="button"
+          >
+            <span class="text-white"> Click Here</span>
+          </button>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

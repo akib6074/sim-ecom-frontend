@@ -1,0 +1,23 @@
+<div
+  class="greet-section"
+  fxLayout="column"
+  fxLayoutAlign="space-between center"
+  fxLayoutGap="3rem"
+>
+  <div
+    fxLayout="column"
+    fxLayoutAlign="space-between center"
+    fxLayoutGap="1rem"
+  >
+    <mat-icon class="done-icon">do_not_disturb</mat-icon>
+    <span class="payment-text">Your order has ben successfully cancelled</span>
+    <span class="transaction">
+      Don't worry!! You can visit shops and order again!
+    </span>
+  </div>
+  <div>
+    <button mat-button class="home" [routerLink]="['/']">
+      <span class="btn-text">Go back to home</span>
+    </button>
+  </div>
+</div>

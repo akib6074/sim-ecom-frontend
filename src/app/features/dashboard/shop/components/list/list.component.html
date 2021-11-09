@@ -1,0 +1,101 @@
+<div class="padding-top-20">
+  <div class="mat-elevation-z8">
+    <div
+      *ngIf="pagination.isLoading"
+      fxLayout="row"
+      fxLayoutAlign="center center"
+      style="height: 400px"
+    >
+      <mat-spinner color="primary"></mat-spinner>
+    </div>
+    <mat-table [dataSource]="dataSource" matSort>
+
+      <ng-container matColumnDef="shopProfileImage">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          Profile
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row" data-label="shopCoverImage">
+          <div class="image-dim">
+            <app-image *ngIf="row.shopProfileImage" [imageName]="row.shopProfileImage"
+                       [type]="profileImageType"></app-image>
+          </div>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="shopCoverImage">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          Cover
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row" data-label="shopCoverImage">
+          <div class="image-dim">
+            <app-image *ngIf="row.shopCoverImage" [imageName]="row.shopCoverImage" [type]="coverImageType"></app-image>
+          </div>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+        <mat-cell *matCellDef="let row" data-label="name">
+          {{ row.name }}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="type">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Type</mat-header-cell>
+        <mat-cell *matCellDef="let row" data-label="type">
+          {{ row.type?.name }}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="domain">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Domain</mat-header-cell>
+        <mat-cell *matCellDef="let row" data-label="domain">
+          {{ row.domain }}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="url">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>URL</mat-header-cell>
+        <mat-cell *matCellDef="let row" data-label="url">
+          {{ row.url }}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="location">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Location</mat-header-cell>
+        <mat-cell *matCellDef="let row" data-label="location">
+          {{ row.location }}
+        </mat-cell>
+      </ng-container>
+
+      <!-- Action Column -->
+      <ng-container matColumnDef="action">
+        <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <div fxLayout="column" fxLayoutAlign="center center">
+
+            <button [routerLink]="['/dashboard/shop/edit/' + row.id]" color="primary" mat-raised-button
+                    title="Update">
+              <span class="text"> Update </span>
+            </button>
+
+            <!-- <button (click)="delete(row.id)" color="warn" mat-raised-button title="Remove">
+              <span class="text"> Delete </span>
+            </button> -->
+          </div>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+
+    <mat-paginator
+      [length]="pagination.totalCount"
+      [pageSizeOptions]="[10, 20, 30, 40, 50, pagination.totalCount]"
+      [pageSize]="pagination.rowsPerPage"
+      showFirstLastButtons
+    >
+    </mat-paginator>
+  </div>
+</div>

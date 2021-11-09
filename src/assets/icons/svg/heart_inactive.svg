@@ -1,0 +1,12 @@
+<svg height="48" viewBox="0 0 48 48" width="48" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="clip-heart_inactive">
+      <rect height="48" width="48"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#clip-heart_inactive)" id="heart_inactive">
+    <path d="M37.679,3.938h-.113a12.84,12.84,0,0,0-10.72,5.868,12.84,12.84,0,0,0-10.72-5.868h-.113A12.758,12.758,0,0,0,3.375,16.689c0,4.175,1.828,10.1,5.394,14.974,6.793,9.287,18.077,17.412,18.077,17.412S38.13,40.95,44.924,31.663c3.566-4.875,5.394-10.8,5.394-14.974A12.758,12.758,0,0,0,37.679,3.938Z" data-name="Icon ionic-ios-heart"
+          fill="#fff"
+          id="Icon_ionic-ios-heart" stroke="#ff7171" stroke-width="1" transform="translate(-2.875 -2.438)"/>
+  </g>
+</svg>

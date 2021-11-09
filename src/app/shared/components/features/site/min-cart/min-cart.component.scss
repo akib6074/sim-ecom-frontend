@@ -1,0 +1,20 @@
+:host {
+  position: fixed;
+  top: 55%;
+  right: 5px;
+  width: 90px;
+  height: 100px;
+  margin-top: -100px;
+  z-index: 10000;
+
+  .min-cart-div {
+    background: #e1f4ee;
+    position: relative;
+    cursor: pointer;
+    padding: 8px;
+
+    .cart-icon {
+      color: rgb(56, 166, 98);
+    }
+  }
+}

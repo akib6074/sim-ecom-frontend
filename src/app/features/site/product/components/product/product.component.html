@@ -1,0 +1,78 @@
+<div class="product-section">
+  <app-top-search [categories]="categories"></app-top-search>
+
+  <app-business-decoration
+    @fade
+    [promotions]="promotions">
+  </app-business-decoration>
+
+  <app-feed-header></app-feed-header>
+
+  <div
+    (scrolled)="onScrollDown($event)"
+    [infiniteScrollDistance]="scrollDistance"
+    [infiniteScrollThrottle]="throttle"
+    infinite-scroll>
+    <div *ngIf="popularProducts">
+      <div class="popular-product-header" fxLayout="row" fxLayoutAlign="center center">
+        <div class="product-header" fxFlex="100" fxFlex.gt-xs="70">
+          Popular Products
+        </div>
+      </div>
+      <app-product-content
+        *ngIf="popularProducts?.length;"
+        [products]="popularProducts">
+      </app-product-content>
+    </div>
+    <div *ngIf="trendingProducts">
+      <div class="trending-product-header" fxLayout="row" fxLayoutAlign="center center">
+        <div class="product-header" fxFlex="100" fxFlex.gt-xs="70">
+          Trending Products
+        </div>
+      </div>
+      <app-product-content
+        *ngIf="trendingProducts?.length;"
+        [products]="trendingProducts">
+      </app-product-content>
+    </div>
+    <div *ngIf="!isLocationSearch && !isKeySearch">
+      <div [@fade] *ngFor="let product of productsByCategories">
+        <app-product-category [product]="product"></app-product-category>
+      </div>
+    </div>
+
+    <div *ngIf="isLocationSearch">
+      <app-product-content
+        *ngIf="productsByLocation?.length; else noProduct"
+        [products]="productsByLocation">
+      </app-product-content>
+      <ng-template #noProduct>
+        <div fxLayout="row" fxLayoutAlign="center center">
+          <h4 class="text-bold">NO PRODUCT FOUND</h4>
+        </div>
+      </ng-template>
+    </div>
+
+    <div *ngIf="isKeySearch">
+      <app-product-content
+        *ngIf="productsByKeySearch?.length; else noProduct"
+        [products]="productsByKeySearch">
+      </app-product-content>
+      <ng-template #noProduct>
+        <div fxLayout="row" fxLayoutAlign="center center">
+          <h4 class="text-bold">NO PRODUCT FOUND</h4>
+        </div>
+      </ng-template>
+    </div>
+
+    <div class="custom-spinner" fxLayout="row" fxLayoutAlign="center center">
+      <mat-spinner *ngIf="isLoading" [diameter]="50"></mat-spinner>
+    </div>
+  </div>
+
+  <app-business-boost></app-business-boost>
+
+  <app-google-play-promotion></app-google-play-promotion>
+
+  <app-partners></app-partners>
+</div>

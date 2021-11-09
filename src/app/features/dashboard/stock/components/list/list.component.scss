@@ -1,0 +1,21 @@
+.stock-section {
+  padding: 0.5rem  1rem;
+  .product {
+    line-height: 26px;
+    vertical-align: center;
+  }
+  .head{
+    padding-bottom: 1rem;
+  }
+  .head div{
+    font-weight: bold;
+  }
+  .status-btn {
+    background-color: #43a7ff;
+    border-radius: 3px;
+    text-align: center;
+    width: 10rem;
+    height: 1.6rem;
+    line-height: 1.6rem;
+  }
+}

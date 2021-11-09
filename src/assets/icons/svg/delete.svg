@@ -1,0 +1,12 @@
+<svg height="48" viewBox="0 0 48 48" width="48" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="clip-delete">
+      <rect height="48" width="48"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#clip-delete)" id="delete">
+    <path d="M2.625,42.626v-32h32v32a5.184,5.184,0,0,1-1.563,3.812A5.051,5.051,0,0,1,29.375,48H8a5.184,5.184,0,0,1-3.812-1.563A5.194,5.194,0,0,1,2.625,42.626Zm34.75-40V8H0V2.625H9.375L12,0H25.375L28,2.625Z" data-name="delete"
+          fill="#c9c9c9"
+          id="delete-2" transform="translate(5 0)"/>
+  </g>
+</svg>

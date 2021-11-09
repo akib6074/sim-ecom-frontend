@@ -1,0 +1,31 @@
+.sidenav-container {
+  height: 100% !important;
+
+  .sidenav {
+    width: 250px !important;
+  }
+
+  .sidenav .mat-toolbar {
+    background: inherit !important;
+  }
+
+  .mat-toolbar.mat-primary {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1 !important;
+  }
+
+  .admin-header {
+    ::ng-deep .welcome-text {
+      color: white;
+    }
+  }
+
+  .content-padding {
+    padding: 1rem;
+  }
+}
+
+.icon-color {
+  color: #28B37B;
+}

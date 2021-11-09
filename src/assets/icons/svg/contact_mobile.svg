@@ -1,0 +1,18 @@
+<svg height="48" viewBox="0 0 48 48" width="48" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="clip-contact_mobile">
+      <rect height="48" width="48"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#clip-contact_mobile)" id="contact_mobile">
+    <g data-name="Group 1676" id="Group_1676" transform="translate(2889 17319)">
+      <path d="M4.5,41.166V26.5a22,22,0,1,1,44,0V41.166" data-name="Path 2575" fill="none"
+            id="Path_2575" stroke="#000" stroke-linecap="round" stroke-linejoin="round"
+            stroke-width="2" transform="translate(-2891.5 -17321.5)"/>
+      <path d="M48.5,33.222a4.889,4.889,0,0,1-4.889,4.889H41.166a4.889,4.889,0,0,1-4.889-4.889V25.889A4.889,4.889,0,0,1,41.166,21H48.5Zm-44,0a4.889,4.889,0,0,0,4.889,4.889h2.444a4.889,4.889,0,0,0,4.889-4.889V25.889A4.889,4.889,0,0,0,11.833,21H4.5Z" data-name="Path 2576"
+            fill="none"
+            id="Path_2576" stroke="#000" stroke-linecap="round" stroke-linejoin="round"
+            stroke-width="2" transform="translate(-2891.5 -17311.115)"/>
+    </g>
+  </g>
+</svg>

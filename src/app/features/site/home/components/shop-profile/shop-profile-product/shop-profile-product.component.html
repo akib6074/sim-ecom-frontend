@@ -1,0 +1,25 @@
+<app-shop-profile-top></app-shop-profile-top>
+<app-shop-profile-header [shop]="shop"></app-shop-profile-header>
+
+<div
+  (scrolled)="onScrollDown($event)"
+  [infiniteScrollDistance]="scrollDistance"
+  [infiniteScrollThrottle]="throttle"
+  infinite-scroll
+>
+  <app-product-content
+    *ngIf="products.length; else noProduct"
+    [products]="products"
+  >
+  </app-product-content>
+
+  <div class="custom-spinner" fxLayout="row" fxLayoutAlign="center center">
+    <mat-spinner *ngIf="isLoading" [diameter]="50"></mat-spinner>
+  </div>
+
+  <ng-template #noProduct>
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <h4 class="text-bold">NO PRODUCT FOUND</h4>
+    </div>
+  </ng-template>
+</div>

@@ -1,0 +1,199 @@
+<div class="order-details-section" fxLayout="row" fxLayoutAlign="center center">
+  <div fxFlex="70" fxLayout="column" fxLayoutGap=".5rem">
+    <mat-card class="mat-elevation-z0">
+      <table class="table-section">
+        <tr>
+          <th></th>
+          <th class="description-header">Product Description</th>
+          <th align="right">Unit Price</th>
+          <th align="right">Quantity</th>
+          <th align="right">Sub Total</th>
+          <th></th>
+        </tr>
+        <tr *ngFor="let item of cart; index as i">
+          <td>
+            <app-image
+              [imageName]="item.product.image?.cover"
+              [type]="imageType"
+              [width]="'70px'"
+              [height]="'70px'">
+            </app-image>
+          </td>
+          <td>
+            <div fxLayout="column" fxLayoutAlign="center start">
+              <div>{{ item?.product.name }}</div>
+              <div *ngIf="item?.productAttribute" class="sub-text">Color: {{ getColor(item?.productAttribute)}} </div>
+              <div *ngIf="item?.productAttribute" class="sub-text">Size : {{ getSize(item?.productAttribute)}} </div>
+            </div>
+          </td>
+          <td  align="right">{{ toFixedNumber(getPrice(item)) | number: '1.2-2'| currency: 'Tk  ' }}/pc</td>
+          <td align="right">
+            <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="5px">
+              <mat-icon (click)="increment(item.product)" class="add-icon">add</mat-icon>
+              <span>{{ item?.quantity }}</span>
+              <mat-icon (click)="decrement(item.product, item.quantity)" class="remove-icon">remove</mat-icon>
+            </div>
+          </td>
+          <td align="right">{{ toFixedNumber(getPrice(item)) * item.quantity | number: '1.2-2'| currency: 'Tk  ' }}</td>
+          <td>
+            <mat-icon (click)="remove(item.product.id)" class="delete-icon">delete</mat-icon>
+          </td>
+          <div *ngIf="i > 0">
+            <mat-divider></mat-divider>
+          </div>
+        </tr>
+        <mat-divider></mat-divider>
+        <tr>
+          <td colspan="3">
+            <span>&nbsp;</span>
+          </td>
+          <td align="right">
+            <span>{{unit[index]}}:</span>
+          </td>
+          <td align="right">
+            <span>{{calculatedCart.items}}</span>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <span>&nbsp;</span>
+          </td>
+          <td align="right">
+            <span>Sub Total:</span>
+          </td>
+          <td align="right">
+            <span>{{calculatedCart.totalAmount| number: '1.2-2'| currency: 'Tk  '}} </span>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <span>&nbsp;</span>
+          </td>
+          <td align="right">
+            <span>Vat:</span>
+          </td>
+          <td align="right">
+            <span>{{calculatedCart.vat| number: '1.2-2'| currency: 'Tk  '}}</span>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <span>&nbsp;</span>
+          </td>
+          <td align="right">
+            <span>Discount:</span>
+          </td>
+          <td align="right">
+            <span>{{calculatedCart.discount| number: '1.2-2'| currency: 'Tk  '}}</span>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <span>&nbsp;</span>
+          </td>
+          <td align="right">
+            <span>Shipping Charge:</span>
+          </td>
+          <td align="right">
+            <span>{{calculatedCart.shippingCharge| number: '1.2-2'| currency: 'Tk  '}}</span>
+          </td>
+        </tr>
+        <tr ng-show="calculatedCart.additionalShippingCharge > 0">
+          <td colspan="3">
+            <span>&nbsp;</span>
+          </td>
+          <td align="right">
+            <span>Additional Shipping Charge:</span>
+          </td>
+          <td align="right">
+            <span>{{calculatedCart.additionalShippingCharge| number: '1.2-2'| currency: 'Tk  '}}</span>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <span>&nbsp;</span>
+          </td>
+          <td align="right">
+            <span>Grand Total:</span>
+          </td>
+          <td align="right">
+            <span>{{calculatedCart.grandTotal| number: '1.2-2'| currency: 'Tk  '}}</span>
+          </td>
+        </tr>
+      </table>
+    </mat-card>
+
+    <div fxLayout="column" fxLayoutGap="2rem">
+          <p class="billing-header">Shipping Details</p>
+          <div fxLayout="column" fxLayoutGap=".8rem">
+            <div fxLayout="column" fxLayoutGap="3%">
+              <span fxLayoutGap="3%">Please select shipping address:</span>
+              <mat-radio-button
+                *ngFor="let address of shippingAddresses"
+                [value]="address"
+                (change)="selection = $event.value"
+              >
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="space-between center"
+                  fxLayoutGap=".8rem"
+                >
+                  <div fxLayout="column" fxFlex="80%">
+                    <span
+                      >Alias: {{ address.alias }}
+                      </span
+                    >
+                    <span
+                      >Name: {{ address.firstname }}
+                      {{ address.lastname }}</span
+                    >
+                    <span>Phone: {{ address.phone }}</span>
+                    <span
+                      >Address: {{ address.address }},
+                      {{ address?.thana?.name }},
+                      {{ address?.district?.name }}</span
+                    >
+                  </div>
+                  <div fxFlex="20%">
+                    <button
+                      mat-button
+                      fxLayout="row"
+                      fxLayoutAlign="center center"
+                      (click)="openDialog(false)"
+                    >
+                      <mat-icon>edit</mat-icon>
+                      <span>Edit</span>
+                    </button>
+                    <button
+                      mat-button
+                      fxLayout="row"
+                      fxLayoutAlign="center center"
+                      (click)="deleteShippingAddress()"
+                    >
+                      <mat-icon>delete</mat-icon>
+                      <span>Delete</span>
+                    </button>
+                  </div>
+                </div>
+              </mat-radio-button>
+            </div>
+          </div>
+          <button
+            mat-raised-button
+            (click)="openDialog(true)"
+            class="dialog-button"
+          >
+            <span class="btn-text"> +Add New Shipping Address </span>
+          </button>
+        </div>
+
+    <div class="footer" fxLayout="row" fxLayoutAlign="space-between center">
+        <button mat-button class="cont-btn" routerLink="/product">
+          <span class="continue-text">Continue Shopping</span>
+        </button>
+        <button mat-button class="edit" (click)="proceedToBilling()">
+          <span class="proceed-text">Proceed to pay</span>
+        </button>
+    </div>
+  </div>
+</div>

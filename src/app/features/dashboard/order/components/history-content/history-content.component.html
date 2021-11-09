@@ -1,0 +1,142 @@
+<div class="history-content-section">
+  <mat-table mat-table [dataSource]="dataSource" matSort class="table-section">
+    <!-- image Column-->
+    <ng-container matColumnDef="image">
+      <mat-header-cell *matHeaderCellDef>Image</mat-header-cell>
+      <mat-cell *matCellDef="let row" data-label="shopCoverImage">
+        <div class="image-dim">
+          <app-image
+            *ngIf="row?.orderDetails?.length &&
+              row?.orderDetails[0]?.product?.image?.cover"
+            [imageName]="row?.orderDetails[0]?.product?.image?.cover"
+            [type]="productImageType"></app-image>
+        </div>
+      </mat-cell>
+    </ng-container>
+
+    <!-- status Column -->
+    <div *ngIf="token.isOnlyCustomer()">
+      <ng-container matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
+        <mat-cell *matCellDef="let row" data-label="status">
+          <button mat-button class="status-btn">
+            {{ OrderStatus[row.status] }}
+          </button>
+        </mat-cell>
+      </ng-container>
+    </div>
+
+    <!-- payment Column -->
+    <ng-container matColumnDef="payment">
+      <mat-header-cell *matHeaderCellDef>Payment</mat-header-cell>
+      <mat-cell *matCellDef="let row" data-label="payment">
+        {{ row.payment }}
+      </mat-cell>
+    </ng-container>
+
+    <!-- total item Column -->
+    <ng-container matColumnDef="_totalItems">
+      <mat-header-cell *matHeaderCellDef>Total Items</mat-header-cell>
+      <mat-cell *matCellDef="let row" data-label="_totalItems">
+        {{ row._totalItems }}
+      </mat-cell>
+    </ng-container>
+    <!-- total Column -->
+    <ng-container matColumnDef="_totalPrice">
+      <mat-header-cell *matHeaderCellDef>Total Price</mat-header-cell>
+      <mat-cell *matCellDef="let row" data-label="_totalPrice">
+        {{ toFixedNumber(row._totalPrice) }}
+      </mat-cell>
+    </ng-container>
+
+    <!-- details-button column -->
+    <ng-container matColumnDef="_orderDetails">
+      <mat-header-cell *matHeaderCellDef>Details</mat-header-cell>
+      <mat-cell *matCellDef="let row" data-label="_orderDetails">
+        <a
+          [routerLink]="['/dashboard/order/details', row.id]"
+          mat-stroked-button
+          class="order-btn">
+          {{ row._orderDetails }}
+        </a>
+      </mat-cell>
+    </ng-container>
+
+    <!-- actions-button column -->
+    <div *ngIf="token.isAdmin()">
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+        <mat-cell *matCellDef="let row" data-label="actions">
+          <button [matMenuTriggerFor]="menu" mat-button>
+            <mat-icon>code</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button
+              mat-menu-item
+              class="pending"
+              (click)="changeStatus(row.id, 1)"
+            >
+              Pending
+            </button>
+            <mat-divider></mat-divider>
+            <button
+              mat-menu-item
+              class="confirmed"
+              (click)="changeStatus(row.id, 2)"
+            >
+              Confirmed
+            </button>
+            <mat-divider></mat-divider>
+            <button
+              mat-menu-item
+              class="ontheway"
+              (click)="changeStatus(row.id, 3)"
+            >
+              On the way
+            </button>
+            <mat-divider></mat-divider>
+            <button
+              mat-menu-item
+              class="delivered"
+              (click)="changeStatus(row.id, 4)"
+            >
+              Delivered
+            </button>
+            <mat-divider></mat-divider>
+            <button
+              mat-menu-item
+              class="cancelled"
+              (click)="changeStatus(row.id, 5)"
+            >
+              Cancelled
+            </button>
+          </mat-menu>
+        </mat-cell>
+      </ng-container>
+    </div>
+
+    <!-- Invoice generation -->
+    <ng-container matColumnDef="invoice">
+      <mat-header-cell *matHeaderCellDef>Invoices</mat-header-cell>
+      <mat-cell *matCellDef="let row" data-label="invoice">
+        <button
+          mat-button
+          class="order-btn"
+          [routerLink]="['/dashboard/order/invoice', row.id]"
+        >
+          Invoice
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+  <mat-paginator
+    [length]="pagination.totalCount"
+    [pageSizeOptions]="[10, 20, 30, 40, 50, pagination.totalCount]"
+    [pageSize]="pagination.rowsPerPage"
+    showFirstLastButtons
+  >
+  </mat-paginator>
+</div>

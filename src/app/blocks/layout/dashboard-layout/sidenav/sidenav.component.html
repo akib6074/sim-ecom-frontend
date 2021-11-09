@@ -1,0 +1,669 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    [attr.role]="'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+    class="sidenav"
+    fixedInViewport
+  >
+    <mat-toolbar>
+      <a routerLink="/">
+        <img
+          src="../../../../../assets/icons/png/Ebonear_logo_green.png"
+          height="65%"
+          width="50%"
+        />
+      </a>
+    </mat-toolbar>
+
+    <mat-nav-list>
+      <a [routerLink]="['/dashboard']" mat-list-item routerLinkActive="active">
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+          <mat-icon class="icon-color">dashboard</mat-icon>
+          <span>Dashboard</span>
+        </div>
+      </a>
+    </mat-nav-list>
+
+    <!--user-->
+    <mat-nav-list [fxShow]="token.isAdmin() || token.isSuperAdmin()">
+      <h2 matSubheader>USER</h2>
+
+      <a
+        [routerLink]="['/dashboard/user']"
+        mat-list-item
+        routerLinkActive="active"
+      >
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+          <mat-icon class="icon-color">account_box</mat-icon>
+          <span>List</span>
+        </div>
+      </a>
+
+      <a
+        [routerLink]="['/dashboard/contact-us']"
+        mat-list-item
+        routerLinkActive="active"
+      >
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+          <mat-icon class="icon-color">contact_mail</mat-icon>
+          <span>Contact Us</span>
+        </div>
+      </a>
+    </mat-nav-list>
+
+    <!--admin-->
+    <mat-nav-list [fxShow]="token.isAdmin() || token.isSuperAdmin()">
+      <h2 matSubheader>CATELOG</h2>
+
+      <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title
+            fxLayout="row"
+            fxLayoutAlign="start center"
+            fxLayoutGap="10px"
+          >
+            <mat-icon class="icon-color">settings_applications</mat-icon>
+            <span>Configuration</span>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-divider></mat-divider>
+        <a
+          [routerLink]="['/dashboard/configuration/add']"
+          routerLinkActive="active"
+          mat-list-item
+        >
+          <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+            <mat-icon class="icon-color">playlist_add</mat-icon>
+            <span>New</span>
+          </div>
+        </a>
+        <a
+          [routerLink]="['/dashboard/configuration/list']"
+          routerLinkActive="active"
+          mat-list-item
+        >
+          <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+            <mat-icon class="icon-color">list_alt</mat-icon>
+            <span>List</span>
+          </div>
+        </a>
+      </mat-expansion-panel>
+      <mat-accordion>
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              fxLayoutGap="10px"
+            >
+              <mat-icon class="icon-color">storefront</mat-icon>
+              <span>Shops</span>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-divider></mat-divider>
+          <a
+            [routerLink]="['/dashboard/shop/add']"
+            mat-list-item
+            routerLinkActive="active"
+          >
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+              <mat-icon class="icon-color">playlist_add</mat-icon>
+              <span>New Shop</span>
+            </div>
+          </a>
+          <a
+            [routerLink]="['/dashboard/shop']"
+            mat-list-item
+            routerLinkActive="active"
+          >
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+              <mat-icon class="icon-color">list_alt</mat-icon>
+              <span>Shops</span>
+            </div>
+          </a>
+          <mat-divider></mat-divider>
+          <a
+            [routerLink]="['/dashboard/shop-type/add']"
+            mat-list-item
+            routerLinkActive="active"
+          >
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+              <mat-icon class="icon-color">playlist_add</mat-icon>
+              <span>New Shop Type</span>
+            </div>
+          </a>
+          <a
+            [routerLink]="['/dashboard/shop-type']"
+            mat-list-item
+            routerLinkActive="active"
+          >
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+              <mat-icon class="icon-color">list_alt</mat-icon>
+              <span>Shop Types</span>
+            </div>
+          </a>
+        </mat-expansion-panel>
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              fxLayoutGap="10px"
+            >
+              <mat-icon class="icon-color">inventory_2</mat-icon>
+              <span>Products</span>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-divider></mat-divider>
+          <a
+            [routerLink]="['/dashboard/product/add']"
+            mat-list-item
+            routerLinkActive="active"
+          >
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+              <mat-icon class="icon-color">playlist_add</mat-icon>
+              <span>New Product</span>
+            </div>
+          </a>
+          <a
+            [routerLink]="['/dashboard/product']"
+            mat-list-item
+            routerLinkActive="active"
+          >
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+              <mat-icon class="icon-color">list_alt</mat-icon>
+              <span>Product List</span>
+            </div>
+          </a>
+          <mat-divider></mat-divider>
+          <a
+            [routerLink]="['/dashboard/category/add']"
+            mat-list-item
+            routerLinkActive="active"
+          >
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+              <mat-icon class="icon-color">playlist_add</mat-icon>
+              <span>New Category</span>
+            </div>
+          </a>
+          <a
+            [routerLink]="['/dashboard/category']"
+            mat-list-item
+            routerLinkActive="active"
+          >
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+              <mat-icon class="icon-color">list_alt</mat-icon>
+              <span>Category List</span>
+            </div>
+          </a>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              fxLayoutGap="10px"
+            >
+              <mat-icon class="icon-color">inventory_2</mat-icon>
+              <span>Stock</span>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-divider></mat-divider>
+          <a
+            [routerLink]="['/dashboard/stock']"
+            mat-list-item
+            routerLinkActive="active"
+          >
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+              <mat-icon class="icon-color">list_alt</mat-icon>
+              <span>Stock List</span>
+            </div>
+          </a>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              fxLayoutGap="10px"
+            >
+              <mat-icon class="icon-color">production_quantity_limits</mat-icon>
+              <span>Orders</span>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-divider></mat-divider>
+
+          <a
+            [routerLink]="['/dashboard/order']"
+            mat-list-item
+            routerLinkActive="active"
+          >
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+              <mat-icon class="icon-color">list_alt</mat-icon>
+              <span>List</span>
+            </div>
+          </a>
+        </mat-expansion-panel>
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              fxLayoutGap="10px"
+            >
+              <mat-icon class="icon-color">savings</mat-icon>
+              <span>Payment Info</span>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-divider></mat-divider>
+          <a
+            [routerLink]="['/dashboard/onlinePaymentInfo/list']"
+            routerLinkActive="active"
+            mat-list-item
+          >
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+              <mat-icon class="icon-color">list_alt</mat-icon>
+              <span>List</span>
+            </div>
+          </a>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              fxLayoutGap="10px"
+            >
+              <mat-icon class="icon-color">developer_board</mat-icon>
+              <span>Tickets</span>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-divider></mat-divider>
+          <a
+            [routerLink]="['/dashboard/ticket/list']"
+            mat-list-item
+            routerLinkActive="active"
+          >
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+              <mat-icon class="icon-color">list_alt</mat-icon>
+              <span>Tickets</span>
+            </div>
+          </a>
+          <a
+            [routerLink]="['/dashboard/department/add']"
+            mat-list-item
+            routerLinkActive="active"
+          >
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+              <mat-icon class="icon-color">playlist_add</mat-icon>
+              <span>New Department</span>
+            </div>
+          </a>
+          <a
+            [routerLink]="['/dashboard/department/list']"
+            mat-list-item
+            routerLinkActive="active"
+          >
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+              <mat-icon class="icon-color">list_alt</mat-icon>
+              <span>Departments</span>
+            </div>
+          </a>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              fxLayoutGap="10px"
+            >
+              <mat-icon class="icon-color">card_giftcard</mat-icon>
+              <span>Coupons</span>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-divider></mat-divider>
+          <a
+            [routerLink]="['/dashboard/coupon/list']"
+            mat-list-item
+            routerLinkActive="active"
+          >
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+              <mat-icon class="icon-color">list_alt</mat-icon>
+              <span>Coupons</span>
+            </div>
+          </a>
+          <a
+            [routerLink]="['/dashboard/coupon/add']"
+            mat-list-item
+            routerLinkActive="active"
+          >
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+              <mat-icon class="icon-color">playlist_add</mat-icon>
+              <span>New Coupon</span>
+            </div>
+          </a>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              fxLayoutGap="10px"
+            >
+              <mat-icon class="icon-color">featured_video</mat-icon>
+              <span>Promotion</span>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-divider></mat-divider>
+          <a
+            [routerLink]="['/dashboard/promotion/add']"
+            routerLinkActive="active"
+            mat-list-item
+          >
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+              <mat-icon class="icon-color">playlist_add</mat-icon>
+              <span>New</span>
+            </div>
+          </a>
+          <a
+            [routerLink]="['/dashboard/promotion/list']"
+            routerLinkActive="active"
+            mat-list-item
+          >
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+              <mat-icon class="icon-color">list_alt</mat-icon>
+              <span>List</span>
+            </div>
+          </a>
+        </mat-expansion-panel>
+
+      </mat-accordion>
+    </mat-nav-list>
+    <!--merchant-->
+    <mat-nav-list [fxShow]="token.isMerchant()">
+      <h2 matSubheader>MERCHANT</h2>
+
+      <mat-accordion>
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              fxLayoutGap="10px"
+            >
+              <mat-icon class="icon-color">storefront</mat-icon>
+              <span>My Shops</span>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-divider></mat-divider>
+          <a
+            [routerLink]="['/dashboard/shop/add']"
+            mat-list-item
+            routerLinkActive="active"
+          >
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+              <mat-icon class="icon-color">playlist_add</mat-icon>
+              <span>New</span>
+            </div>
+          </a>
+          <a
+            [routerLink]="['/dashboard/shop']"
+            mat-list-item
+            routerLinkActive="active"
+          >
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+              <mat-icon class="icon-color">list_alt</mat-icon>
+              <span>List</span>
+            </div>
+          </a>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              fxLayoutGap="10px"
+            >
+              <mat-icon class="icon-color">inventory_2</mat-icon>
+              <span>My Products</span>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-divider></mat-divider>
+          <a
+            [routerLink]="['/dashboard/product/add']"
+            mat-list-item
+            routerLinkActive="active"
+          >
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+              <mat-icon class="icon-color">playlist_add</mat-icon>
+              <span>New</span>
+            </div>
+          </a>
+          <a
+            [routerLink]="['/dashboard/product']"
+            mat-list-item
+            routerLinkActive="active"
+          >
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+              <mat-icon class="icon-color">list_alt</mat-icon>
+              <span>List</span>
+            </div>
+          </a>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              fxLayoutGap="10px"
+            >
+              <mat-icon class="icon-color">featured_video</mat-icon>
+              <span>Promotion</span>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-divider></mat-divider>
+          <a
+            [routerLink]="['/dashboard/promotion/add']"
+            routerLinkActive="active"
+            mat-list-item
+          >
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+              <mat-icon class="icon-color">playlist_add</mat-icon>
+              <span>New</span>
+            </div>
+          </a>
+          <a
+            [routerLink]="['/dashboard/promotion/list']"
+            routerLinkActive="active"
+            mat-list-item
+          >
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+              <mat-icon class="icon-color">list_alt</mat-icon>
+              <span>List</span>
+            </div>
+          </a>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              fxLayoutGap="10px"
+            >
+              <mat-icon class="icon-color">report</mat-icon>
+              <span>Report</span>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <a
+            [routerLink]="['/dashboard/report']"
+            routerLinkActive="active"
+            mat-list-item
+          >
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+              <mat-icon class="icon-color">list_alt</mat-icon>
+              <span>List</span>
+            </div>
+          </a>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-nav-list>
+    <!--Customer-->
+    <mat-nav-list
+      [fxShow]="token.isCustomer()"
+      [fxHide]="token.isMerchant() || token.isAdmin()"
+    >
+      <h2 matSubheader>CUSTOMER</h2>
+
+      <mat-accordion>
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              fxLayoutGap="10px"
+            >
+              <mat-icon class="icon-color">storefront</mat-icon>
+              <span>My Orders</span>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-divider></mat-divider>
+
+          <a
+            [routerLink]="['/dashboard/order']"
+            mat-list-item
+            routerLinkActive="active"
+          >
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+              <mat-icon class="icon-color">list_alt</mat-icon>
+              <span>List</span>
+            </div>
+          </a>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              fxLayoutGap="10px"
+            >
+              <mat-icon class="icon-color">confirmation_number</mat-icon>
+              <span>Ticket</span>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-divider></mat-divider>
+          <a
+            [routerLink]="['/dashboard/ticket']"
+            routerLinkActive="active"
+            mat-list-item
+          >
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+              <mat-icon class="icon-color">playlist_add</mat-icon>
+              <span>New</span>
+            </div>
+          </a>
+          <a
+            [routerLink]="['/dashboard/ticket/list']"
+            routerLinkActive="active"
+            mat-list-item
+          >
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+              <mat-icon class="icon-color">list_alt</mat-icon>
+              <span>List</span>
+            </div>
+          </a>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="admin-header">
+    <mat-toolbar
+      class="theme-background-color"
+      fxLayout="row"
+      fxLayoutAlign="space-between center"
+    >
+      <button
+        (click)="drawer.toggle()"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        type="button"
+      >
+        <mat-icon aria-label="Side nav toggle icon" class="text-white"
+          >menu
+        </mat-icon>
+      </button>
+
+      <span class="welcome-text" fxFlexAlign="end center">
+        Welcome To Ebonear Dashboard
+      </span>
+
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <button [matMenuTriggerFor]="account" class="pop-menu" mat-icon-button>
+          <mat-icon class="text-white">settings</mat-icon>
+        </button>
+        <mat-menu
+          #account="matMenu"
+          class="portal-menu"
+          xPosition="before"
+          yPosition="below"
+        >
+          <mat-list>
+            <mat-list-item>
+              <button
+                [routerLink]="['/dashboard/user/edit/profile']"
+                mat-flat-button
+              >
+                <mat-icon>manage_accounts</mat-icon>
+                Profile Settings
+              </button>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+              <button
+                [routerLink]="['/dashboard/user/profile']"
+                mat-flat-button
+              >
+                <mat-icon>person</mat-icon>
+                My Profile
+              </button>
+            </mat-list-item>
+
+            <mat-divider></mat-divider>
+
+            <mat-list-item>
+              <button (click)="gotoChangePassword(tokenId)" mat-flat-button>
+                <mat-icon>lock_open</mat-icon>
+                Change Password
+              </button>
+            </mat-list-item>
+
+            <mat-divider></mat-divider>
+
+            <mat-list-item>
+              <button (click)="logOut()" mat-flat-button>
+                <mat-icon>exit_to_app</mat-icon>
+                Sign out
+              </button>
+            </mat-list-item>
+          </mat-list>
+        </mat-menu>
+      </div>
+    </mat-toolbar>
+
+    <div class="content-padding">
+      <router-outlet></router-outlet>
+    </div>
+    <app-footer></app-footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>

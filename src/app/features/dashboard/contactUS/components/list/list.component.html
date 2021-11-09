@@ -1,0 +1,67 @@
+<div class="padding-top-20">
+  <div class="mat-elevation-z8">
+    <div
+      *ngIf="pagination.isLoading"
+      fxLayout="row"
+      fxLayoutAlign="center center"
+      style="height: 400px"
+    >
+      <mat-spinner color="primary"></mat-spinner>
+    </div>
+    <mat-table [dataSource]="dataSource" matSort>
+
+      <ng-container matColumnDef="subject">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Subject</mat-header-cell>
+        <mat-cell *matCellDef="let row" data-label="subject">
+          {{ row.subject }}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="message">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Message</mat-header-cell>
+        <mat-cell *matCellDef="let row" data-label="message">
+          {{ row.message }}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
+        <mat-cell *matCellDef="let row" data-label="email">
+          {{ row.email }}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="phone">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Phone</mat-header-cell>
+        <mat-cell *matCellDef="let row" data-label="phone">
+          {{ row.phone }}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="isEmail">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>By Email</mat-header-cell>
+        <mat-cell *matCellDef="let row" data-label="isEmail">
+          {{ row.isEmail ? 'Yes' : 'No' }}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="isSms">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>By Sms</mat-header-cell>
+        <mat-cell *matCellDef="let row" data-label="isSms">
+          {{ row.isSms ? 'Yes' : 'No' }}
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+
+    <mat-paginator
+      [length]="pagination.totalCount"
+      [pageSizeOptions]="[10, 20, 30, 40, 50, pagination.totalCount]"
+      [pageSize]="pagination.rowsPerPage"
+      showFirstLastButtons
+    >
+    </mat-paginator>
+  </div>
+</div>

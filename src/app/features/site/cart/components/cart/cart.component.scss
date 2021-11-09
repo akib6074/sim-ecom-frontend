@@ -1,0 +1,77 @@
+.order-details-section {
+  padding: 2rem 0 2rem 0;
+
+  .table-section {
+    width: 100%;
+
+    th,
+    td {
+      padding: 15px;
+    }
+
+    th {
+      color: #cccccc;
+      font-weight: normal;
+    }
+
+    .description-header {
+      text-align: left;
+    }
+
+    .sub-text {
+      font-size: small;
+    }
+
+    .remove-icon {
+      font-size: 1.2rem;
+      color: #cccccc;
+      cursor: pointer;
+    }
+
+    .add-icon {
+      font-size: 1.2rem;
+      color: #80c3ff;
+      cursor: pointer;
+    }
+
+    .delete-icon {
+      color: #cccccc;
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+  }
+
+  mat-divider {
+    color: #cccccc;
+  }
+
+  .footer {
+    padding-top: 1rem;
+
+    .cont-btn {
+      background-color: #80c3ff;
+      .continue-text{
+        color: white;
+      }
+    }
+
+    .edit {
+      background-color: #28b37b;
+      .proceed-text{
+        color: white;
+      }
+    }
+  }
+
+  .remove-icon {
+    font-size: 1.2rem;
+    color: #cccccc;
+    cursor: pointer;
+  }
+
+  .add-icon {
+    font-size: 1.2rem;
+    color: #80c3ff;
+    cursor: pointer;
+  }
+}

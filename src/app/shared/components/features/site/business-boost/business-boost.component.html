@@ -1,0 +1,44 @@
+<div
+  class="business-boost-section"
+  fxLayout="row"
+  fxLayoutAlign="center center"
+>
+  <div fxFlex="70" fxLayout="row" fxLayoutGap="2rem">
+    <div
+      fxLayout="column"
+      fxLayout.gt-sm="row"
+      fxLayoutAlign="center center"
+      fxLayoutAlign.gt-sm="space-between center"
+      fxLayoutGap="3rem"
+    >
+      <div
+        fxFlex="45"
+        fxLayout="column"
+        fxLayoutAlign="space-between start"
+        fxLayoutGap="2rem"
+      >
+        <div>
+          <b class="heading-section">Boost Your Business With Us</b>
+        </div>
+
+        <div>
+          <p class="order-description">
+            Lorem is simply dummy text of the printing and typesetting industry.
+            Lorem Ipsum has been the indutry's standard dummy text ever scince
+            the 1500s
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <button
+          class="button-section"
+          mat-button
+          [routerLink]="['/auth/registration', { type: 'merchant' }]"
+        >
+          <span class="button-text">GET STARTED</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

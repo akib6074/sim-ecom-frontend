@@ -1,0 +1,16 @@
+<svg height="48" viewBox="0 0 48 48" width="48" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="clip-following_shop">
+      <rect height="48" width="48"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#clip-following_shop)" data-name="following shop" id="following_shop">
+    <g data-name="Group 1128" id="Group_1128" transform="translate(-1551.277 -302.501)">
+      <path d="M3.838,0H29.781V36.321Z" data-name="Icon open-account-logout" fill="#fff"
+            id="Icon_open-account-logout" stroke="#c9c9c9" stroke-width="2" transform="translate(1568.319 308.5)"/>
+      <path d="M44.868,9,18.146,37.086,6,24.32" data-name="Icon feather-check" fill="none"
+            id="Icon_feather-check" stroke="#c9c9c9" stroke-linecap="round" stroke-linejoin="round"
+            stroke-width="3" transform="translate(1546.503 307.923)"/>
+    </g>
+  </g>
+</svg>

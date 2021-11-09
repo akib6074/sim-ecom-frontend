@@ -1,0 +1,33 @@
+<div class="example-container">
+  <h2>All User</h2>
+
+  <div
+    cdkDropList
+    #todoList="cdkDropList"
+    [cdkDropListData]="allUsers"
+    [cdkDropListConnectedTo]="[selectedUsersList]"
+    class="example-list"
+    (cdkDropListDropped)="drop($event)"
+  >
+    <div class="example-box" *ngFor="let allUser of allUsers" cdkDrag>
+      {{ allUser.firstName }} {{ allUser.lastName }}
+    </div>
+  </div>
+</div>
+
+<div class="example-container">
+  <h2>Selected User</h2>
+
+  <div
+    cdkDropList
+    #selectedUsersList="cdkDropList"
+    [cdkDropListData]="selectedUsers"
+    [cdkDropListConnectedTo]="[todoList]"
+    class="example-list"
+    (cdkDropListDropped)="drop($event)"
+  >
+    <div class="example-box" *ngFor="let item of selectedUsers" cdkDrag>
+      {{ item.firstName }} {{ item.lastName }}
+    </div>
+  </div>
+</div>

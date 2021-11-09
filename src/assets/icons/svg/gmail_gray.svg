@@ -1,0 +1,12 @@
+<svg height="72" viewBox="0 0 72 72" width="72" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="clip-gmail_gray">
+      <rect height="72" width="72"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#clip-gmail_gray)" id="gmail_gray">
+    <path d="M72,9V54a4.42,4.42,0,0,1-4.5,4.5H63V17.661L36,37.05,9,17.661V58.5H4.5A4.418,4.418,0,0,1,0,54V9A4.422,4.422,0,0,1,4.5,4.5H6L36,26.25,66,4.5h1.5A4.422,4.422,0,0,1,72,9Z" data-name="Icon simple-gmail"
+          fill="#787878"
+          id="Icon_simple-gmail" transform="translate(0 5)"/>
+  </g>
+</svg>

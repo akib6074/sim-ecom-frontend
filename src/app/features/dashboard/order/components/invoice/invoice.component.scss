@@ -1,0 +1,107 @@
+.invoice {
+  .invoice-top-section {
+    padding: 1rem 0 1rem 0;
+    background-color: #28b37b;
+  }
+
+  .invoice-bottom-section {
+    padding: 1rem 0 1rem 0;
+    background-color: #28b37b;
+  }
+
+  .heading-section {
+    padding: 3rem 0 2rem 0;
+
+    .invoice-view {
+      font-size: 1.8rem;
+      color: #696969;
+    }
+
+    img {
+      cursor: pointer;
+    }
+  }
+
+  .date-section {
+    margin-top: -3rem;
+  }
+
+  .hr-size {
+    width: 5rem;
+    height: 0;
+  }
+
+  .terms-section {
+    font-size: 0.8rem;
+  }
+
+  .line-size {
+    width: 22rem;
+  }
+
+  .billing-section {
+    font-weight: bold;
+    color: #010127;
+  }
+
+  .table-section {
+    padding: 3rem 0 7rem 0;
+
+    table {
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      border: 1px solid rgb(138, 137, 137);
+      border-collapse: collapse;
+    }
+
+    th {
+      padding: 0.312rem;
+      text-align: center;
+      background-color: #28b37b;
+    }
+
+    td {
+      text-align: center;
+      padding: 0.4rem;
+
+      &:last-child {
+        text-align: right;
+      }
+    }
+
+    .table-cell {
+      border: unset;
+      text-align: right;
+    }
+
+    .table-cell-final {
+      border: unset;
+      text-align: right;
+    }
+  }
+
+  .total-section {
+    padding: 0 0 5rem 0;
+
+    .final-total {
+      width: 53rem;
+    }
+  }
+
+  .invoiceButton {
+    padding: 8px 20px 8px 20px;
+    position: relative;
+    border: 0 none;
+    border-radius: 4px;
+    height: 42px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 13px;
+    width: 254px;
+    outline: 0;
+    overflow: hidden;
+  }
+}

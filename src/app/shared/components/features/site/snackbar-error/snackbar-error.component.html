@@ -1,0 +1,29 @@
+<div *ngIf="!data.error" class="top-index">
+  <p>{{ data.message }}</p>
+</div>
+
+<div *ngIf="data.error">
+  <div *ngIf="data.error.fields">
+    <p>
+      <strong>{{ data.message }}</strong>
+    </p>
+    <div *ngFor="let error of data.error.fields">
+      Field: {{ error.field }} <br/>
+      Message: <br/>
+      <p *ngFor="let msg of error.message; let i = index">
+        {{ i }} - {{ msg }}
+      </p>
+    </div>
+  </div>
+
+  <div *ngIf="data.error.system" class="top-index">
+    <p>
+      <strong>{{ data.message }}</strong>
+    </p>
+    <p>
+      Domain: {{ data.error.system.domain }} <br/>
+      Value: {{ data.error.system.value }} <br/>
+      Message: {{ data.error.system.message }}
+    </p>
+  </div>
+</div>

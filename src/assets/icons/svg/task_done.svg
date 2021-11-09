@@ -1,0 +1,19 @@
+<svg height="48" viewBox="0 0 48 48" width="48" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="clip-task_done">
+      <rect height="48" width="48"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#clip-task_done)" id="task_done">
+    <g data-name="Group 1672" id="Group_1672" transform="translate(-8 -8)">
+      <g data-name="Ellipse 493" fill="#fff" id="Ellipse_493" stroke="#06b37b" stroke-width="2"
+         transform="translate(8 8)">
+        <circle cx="24" cy="24" r="24" stroke="none"/>
+        <circle cx="24" cy="24" fill="none" r="23"/>
+      </g>
+      <path d="M29.562,9l-16.2,16.2L6,17.836" data-name="Icon feather-check" fill="none"
+            id="Icon_feather-check" stroke="#06b37b" stroke-linecap="round" stroke-linejoin="round"
+            stroke-width="2" transform="translate(14.749 14.75)"/>
+    </g>
+  </g>
+</svg>

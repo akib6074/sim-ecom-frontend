@@ -1,0 +1,26 @@
+.greet-section {
+  padding: 17rem 0 0 0;
+
+  .done-icon {
+    margin-left: -2.5rem;
+    color: red;
+    font-size: 5rem;
+  }
+
+  .payment-text {
+    margin-top: 3rem;
+    font-size: xx-large;
+    color: #28b37b;
+  }
+
+  .transaction {
+    color: #a0a0a0;
+  }
+
+  .home {
+    border-radius: 2px;
+    border-color: #28b37b;
+    background-color: #28b37b;
+    color: white;
+  }
+}

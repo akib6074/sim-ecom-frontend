@@ -1,0 +1,13 @@
+<div class="site-layout" fxLayout="column">
+  <div class="header">
+    <app-header></app-header>
+  </div>
+  <mat-card class="less-padding">
+    <router-outlet></router-outlet>
+    <div class="footer">
+      <app-footer></app-footer>
+    </div>
+  </mat-card>
+  <app-min-cart (showCart)="showCart()"></app-min-cart>
+  <app-cart (closeCart)="isShow = false" [fxShow]="isShow"></app-cart>
+</div>

@@ -1,0 +1,152 @@
+.product-profile-section {
+  padding: 1rem 0 0 0;
+  .product-name {
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: #484848;
+    margin-bottom: 1.55rem!important;
+  }
+  .mbtm{
+    margin-bottom: 1.55rem!important;
+  }
+  .mtop{
+    margin-top: 1.55rem!important;
+  }
+  .reviews {
+    color: #50d155;
+    font-size: small;
+  }
+
+  .rating-link {
+    color: #92ccff;
+    cursor: pointer;
+  }
+
+  .code {
+    color: #a0a0a0;
+  }
+
+  .short-description {
+    color: #9b9b9b;
+    margin-bottom: 1.25rem!important;
+  }
+
+  .text {
+    font-weight: 600;
+  }
+
+  .stock-btn {
+    border: unset;
+    border-radius: 2px;
+    background-color: #43a7ff;
+    height: 1.8rem;
+
+    .stock-text {
+      color: white;
+      font-size: small;
+    }
+  }
+
+  .price {
+    margin-bottom: 2.2rem!important;
+    .discount-price {
+      font-size: 2rem;
+      font-weight: 500;
+    }
+
+    .total-price {
+      text-decoration: line-through;
+    }
+
+    .discount {
+      color: #ea6d6d;
+    }
+  }
+
+  .icon {
+    cursor: pointer;
+    font-size: 1.2rem;
+  }
+
+  .cart-btn {
+    background-color: #06b37b;
+    border-radius: 2px;
+    border: 1px solid #04835b;
+    width: 12rem;
+
+    .cart-icon {
+      color: white;
+    }
+  }
+
+  .buy-button {
+    border-radius: 2px;
+    border: 1px solid #06b37b;
+    width: 12rem;
+
+    .buy-icon {
+      color: #ffc845;
+    }
+  }
+    .tab-button {
+      transition-duration: 0.4s;
+      width: 15rem;
+    }
+    .tab-button:hover {
+      background-color: #444444;
+      width: 15rem;
+      .hover-text {
+        color: white;
+    }
+  }
+
+  td {
+    padding: 10px;
+  }
+
+  .table-text {
+    color: #cecece;
+
+    .margin-right {
+      margin-right: 0.2rem;
+    }
+  }
+
+  .shop-name {
+    color: #43a7ff;
+  }
+  .user-name {
+    font-weight: bold;
+  }
+}
+.review-section {
+  padding: 0 0 2rem 0;
+  .top-text {
+    padding-bottom: 1.5rem;
+    font-size: 2.3rem;
+    color: #dddcdc;
+    font-family: Humanistic sans-serif;
+    margin-top: 1rem;
+  }
+  .name {
+    font-size: 1.2rem;
+    font-size: large;
+    color: #28b37b;
+  }
+  .review-des{
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+  }
+}
+
+img {
+  border-radius: 50%;
+}
+
+.rating-icon-section {
+  margin-top: -0.7rem;
+}
+
+.desc {
+  padding-bottom: 1rem;
+}

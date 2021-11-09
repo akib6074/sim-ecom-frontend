@@ -1,0 +1,12 @@
+<svg height="48" viewBox="0 0 48 48" width="48" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="clip-dropdown">
+      <rect height="48" width="48"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#clip-dropdown)" id="dropdown">
+    <path d="M3.95,13.5H44.543a3.149,3.149,0,0,1,2.224,5.38l-20.289,20.3a3.161,3.161,0,0,1-4.465,0L1.726,18.88A3.149,3.149,0,0,1,3.95,13.5Z" data-name="Icon awesome-caret-down"
+          fill="#787878"
+          id="Icon_awesome-caret-down" transform="translate(-0.247 -2.499)"/>
+  </g>
+</svg>

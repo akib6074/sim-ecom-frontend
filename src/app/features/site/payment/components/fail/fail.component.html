@@ -1,0 +1,23 @@
+<div
+  class="greet-section"
+  fxLayout="column"
+  fxLayoutAlign="space-between center"
+  fxLayoutGap="3rem"
+>
+  <div
+    fxLayout="column"
+    fxLayoutAlign="space-between center"
+    fxLayoutGap="1rem"
+  >
+    <mat-icon class="done-icon">error</mat-icon>
+    <span class="payment-text">Oh no!!Your Payment has been Failed!</span>
+    <span class="transaction">
+      Don't worry!! We'll try your payment again over next few days.
+    </span>
+  </div>
+  <div>
+    <button mat-button class="home" [routerLink]="['/']">
+      <span class="btn-text">Go back to home</span>
+    </button>
+  </div>
+</div>

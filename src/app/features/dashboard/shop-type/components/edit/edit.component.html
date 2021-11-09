@@ -1,0 +1,63 @@
+<div class="mtb16" fxLayout="row" fxLayoutAlign="center center">
+  <div fxFlex="60" fxFlex.lt-md="100">
+    <div class="padding-top-20">
+      <mat-card>
+        <mat-toolbar class="theme-background-color">
+          <mat-toolbar-row class="margin-left text-white">
+            Update Shop
+          </mat-toolbar-row
+          >
+        </mat-toolbar>
+
+        <mat-card-content class="padding-out">
+          <form
+            (ngSubmit)="save()"
+            (reset)="editShopTypeForm.reset()"
+            [formGroup]="editShopTypeForm"
+          >
+            <div fxLayout="column">
+              <mat-form-field appearance="outline" floatLabel="always">
+                <mat-label>Name</mat-label>
+                <input
+                  formControlName="name"
+                  matInput
+                  placeholder="Shop Name"
+                  required
+                />
+                <mat-error>Name is required</mat-error>
+              </mat-form-field>
+            </div>
+
+            <div
+              class="padding-top-20"
+              fxLayout="row"
+              fxLayout.lt-sm="column"
+              fxLayoutAlign="end"
+              fxLayoutGap="15px"
+              fxLayoutGap.lt-md="10px"
+            >
+              <button
+                class="text-white"
+                color="warn"
+                fxFlex="10%"
+                mat-raised-button
+                type="reset"
+              >
+                Reset
+              </button>
+              <button
+                [disabled]="isLoading"
+                class="theme-background-color"
+                fxFlex="10%"
+                mat-raised-button
+                type="submit"
+              >
+                {{ btnLabel }}
+              </button>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+<mat-card (click)="displayCart()" class="min-cart-div" fxLayout="column" fxLayoutAlign="space-between center" fxLayoutGap="5px">
+  <div>{{calculatedCart.items}} {{unit[index]}}</div>
+  <div>
+    <mat-icon class="cart-icon">shopping_cart</mat-icon>
+  </div>
+  <div>{{calculatedCart.grandTotal | number: '1.2-2'| currency: 'Tk  '}}</div>
+</mat-card>

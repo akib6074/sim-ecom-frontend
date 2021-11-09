@@ -1,0 +1,17 @@
+<svg height="48" viewBox="0 0 48 48" width="48" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="clip-_3dot_menu2">
+      <rect height="48" width="48"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#clip-_3dot_menu2)" data-name="3dot_menu2" id="_3dot_menu2">
+    <g data-name="Group 1072" id="Group_1072" transform="translate(19.8)">
+      <circle cx="4.5" cy="4.5" data-name="Ellipse 184" fill="#ccc" id="Ellipse_184" r="4.5"
+              transform="translate(0.2)"/>
+      <circle cx="4.5" cy="4.5" data-name="Ellipse 185" fill="#ccc" id="Ellipse_185" r="4.5"
+              transform="translate(0.2 19)"/>
+      <circle cx="4.5" cy="4.5" data-name="Ellipse 186" fill="#ccc" id="Ellipse_186" r="4.5"
+              transform="translate(0.2 39)"/>
+    </g>
+  </g>
+</svg>

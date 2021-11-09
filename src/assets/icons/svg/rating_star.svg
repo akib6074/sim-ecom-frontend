@@ -1,0 +1,12 @@
+<svg height="48" viewBox="0 0 48 48" width="48" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="clip-rating_star">
+      <rect height="48" width="48"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#clip-rating_star)" id="rating_star">
+    <path d="M27,39.648,41.832,48.6,37.9,31.728,51,20.376,33.744,18.912,27,3,20.256,18.912,3,20.376,16.1,31.728,12.168,48.6Z" data-name="Icon material-star"
+          fill="#ffbc1e"
+          id="Icon_material-star" transform="translate(-3 -2)"/>
+  </g>
+</svg>

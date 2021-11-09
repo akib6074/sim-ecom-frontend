@@ -1,0 +1,71 @@
+.billing-section {
+  padding: 3rem 0 3rem 0;
+
+  .billing-header {
+    color: rgb(51, 51, 51);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+
+  .dialog-button {
+    width: 32rem;
+    .btn-text {
+      font-size: 1rem;
+      color: #28b37b;
+    }
+  }
+
+  .profile-section {
+    font-size: small;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(78, 78, 78);
+  }
+
+  table {
+    color: rgb(138, 138, 138);
+
+    .right {
+      text-align: right;
+    }
+
+    td {
+      width: 10rem;
+    }
+
+    .total {
+      color: rgb(32, 32, 32);
+    }
+  }
+
+  button {
+    width: 10rem;
+    height: 2rem;
+    border: 0;
+  }
+
+  .cancel-button {
+    background-color: rgb(201, 201, 201);
+    color: white;
+  }
+
+  ::ng-deep .pay-button {
+    background-color: #28b37b;
+    color: white;
+    font-size: small;
+  }
+}
+
+::ng-deep .mat-checkbox-frame,
+::ng-deep .mat-checkbox-background {
+  border-radius: 50% !important;
+  border-color: #28b37b;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+  background-color: #28b37b;
+}
+
+.btn-text {
+  color: #ffffff;
+  font-size: 0.9rem;
+}

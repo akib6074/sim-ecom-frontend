@@ -1,0 +1,62 @@
+<div class="mat-elevation-z8">
+  <div
+    *ngIf="pagination.isLoading"
+    fxLayout="row"
+    fxLayoutAlign="center center"
+    style="height: 400px"
+  >
+    <mat-spinner color="primary"></mat-spinner>
+  </div>
+  <mat-table [dataSource]="dataSource" class="table-grid" matSort>
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Product</mat-header-cell>
+      <mat-cell *matCellDef="let row" data-label="product">
+        <div class="button-align" fxLayout="column" fxLayoutGap="0.5rem">
+          <div>
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+              <div fxFlex="85">
+                <span class="text-bold">  Name: </span>{{ row.name }}<br>
+                <span class="text-bold">  Reference: </span> {{ row.reference }}<br>
+                <span class="text-bold">  Summary: </span> {{ row.summary }}<br>
+                <span class="text-bold">  Price: </span> {{ row.price }}<br>
+                <span class="text-bold">  Quantity: </span> {{ row.quantity }}<br>
+                <span class="text-bold">  Meta Title: </span> {{ row.metaTitle }}<br>
+                <span class="text-bold">  Meta Keywords: </span> {{ row.metaKeywords }}<br>
+              </div>
+              <div fxFlex="15" fxLayoutAlign="end">
+                <app-image *ngIf="row.image.cover" [imageName]="row.image.cover" [type]="imageType"></app-image>
+              </div>
+            </div>
+
+          </div>
+
+          <!--action-->
+          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="0.5rem" style="padding-top: 1rem">
+
+            <button [routerLink]="['/dashboard/product/edit/' + row.id]" color="primary" mat-mini-fab
+                    title="Update">
+              <mat-icon class="text-white">edit</mat-icon>
+            </button>
+
+            <button (click)="delete(row.id)" color="warn" mat-mini-fab title="Remove">
+              <mat-icon class="text-white">delete</mat-icon>
+            </button>
+          </div>
+        </div>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+
+  <mat-paginator
+    [length]="pagination.totalCount"
+    [pageSizeOptions]="[10, 20, 30, 40, 50, pagination.totalCount]"
+    [pageSize]="pagination.rowsPerPage"
+    showFirstLastButtons
+  >
+  </mat-paginator>
+</div>
+

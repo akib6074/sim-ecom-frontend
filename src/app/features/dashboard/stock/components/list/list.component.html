@@ -1,0 +1,98 @@
+<div class="stock-section" fxLayout="row" fxLayoutAlign="center center">
+  <div fxFlex="100">
+    <div
+      class="head"
+      fxLayout="row"
+      fxLayoutAlign="center center"
+      fxLayoutGap="1rem grid">
+      <div fxFlex="8">
+        image
+      </div>
+      <div fxFlex="22">
+        Product Name
+      </div>
+      <div fxFlex="20">
+        Reference
+      </div>
+      <div fxFlex="15">
+        Price
+      </div>
+      <div fxFlex="12">
+        Quantity
+      </div>
+      <div fxFlex="12">
+        Reserved
+      </div>
+      <div fxFlex="11">
+        Sold
+      </div>
+    </div>
+    <div
+      fxLayout="row wrap"
+      fxLayoutAlign="center center"
+      fxLayoutGap="1rem grid">
+      <ng-container *ngFor="let product of products;">
+        <div fxFlex="100">
+          <div class="product">
+            <div fxFlex="8">
+              <app-image *ngIf="product?.image?.cover" [imageName]="product?.image?.cover" [width]="'34px'" [height]="'26px'" [type]="imageType"></app-image>
+            </div>
+            <div fxFlex="22">
+              {{product.name}}
+            </div>
+            <div fxFlex="20">
+              {{product.reference}}
+            </div>
+            <div fxFlex="15">
+              {{product.price}}
+            </div>
+            <div fxFlex="12">
+              {{product.quantity}}
+            </div>
+            <div fxFlex="12">
+              {{product.reserved}}
+            </div>
+            <div fxFlex="11">
+              {{product.sold}}
+            </div>
+          </div>
+        </div>
+        <div>
+          <div
+            fxLayout="row wrap"
+            fxLayoutAlign="center center"
+            fxLayoutGap="1rem grid">
+            <ng-container *ngFor="let productAttribute of product.productAttributes;">
+              <div fxFlex="100">
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="center center"
+                  fxLayoutGap="1rem grid">
+                  <div fxFlex="8">
+                    <app-image *ngIf="productAttribute?.image" [imageName]="productAttribute?.image" [width]="'34px'" [height]="'26px'" [type]="imageType"></app-image>
+                  </div>
+                  <div fxFlex="20">
+                    {{productAttribute.reference}}
+                  </div>
+                  <div fxFlex="15">
+                    {{productAttribute.price}}
+                  </div>
+                  <div fxFlex="12">
+                    {{productAttribute.quantity}}
+                  </div>
+                  <div fxFlex="12">
+                    {{productAttribute.reserved}}
+                  </div>
+                  <div fxFlex="11">
+                    {{productAttribute.sold}}
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </ng-container>
+      <div (click)="showMore()">Show More</div>
+    </div>
+  </div>
+</div>

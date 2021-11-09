@@ -1,0 +1,147 @@
+<div class="status-section" fxLayout="row" fxLayoutAlign="center center">
+  <div fxFlex="70" fxLayout="column" fxLayoutGap=".5rem">
+    <mat-card class="card-section">
+      <div fxLayout="column" fxLayoutGap="1rem">
+        <div>
+          <span class="header">Order Details</span>
+        </div>
+
+        <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap.lt-md="2rem">
+          <div fxLayout="column" fxLayoutGap=".8rem" fxFlex="65%">
+            <div fxLayout="row" fxLayoutGap="5rem">
+              <span>Status:</span>
+              <span class="status">{{ order?.invoice?.status }}</span>
+            </div>
+            <div fxLayout="row" fxLayoutGap="5.5rem">
+              <span>Total:</span>
+              <div fxLayout="row">
+                <span>{{ totalPrice }} Tk</span>
+              </div>
+            </div>
+          </div>
+
+          <div fxLayout="column" fxLayoutGap=".8rem" fxFlex="35%">
+            <div fxLayout="row" fxLayoutGap="3.5rem">
+              <span>Date/Time:</span>
+              <span class="biller-details">{{ order?.cart?.createAt | date }}</span>
+            </div>
+            <div fxLayout="row" fxLayoutGap="5.7rem">
+              <span>Billing To:</span>
+              <div fxLayout="column" fxLayoutGap="0.2rem">
+                <span class="biller-details"
+                  >{{ user?.firstName }} {{ user?.lastName }}</span
+                >
+                <span class="biller-details">{{ user?.phone }}</span>
+                <span class="biller-details"
+                  >{{ user?.address?.address }},
+                  {{ user?.address?.thana?.name }},
+                  {{ user?.address?.district?.name }},
+                  {{ user?.address?.country?.name }}</span
+                >
+              </div>
+            </div>
+            <div fxLayout="row" fxLayoutGap="5.7rem">
+              <span>Shipping To:</span>
+              <div fxLayout="column" fxLayoutGap="0.2rem">
+                <span class="biller-details"
+                  >{{ user?.firstName }} {{ user?.lastName }}</span
+                >
+                <span class="biller-details">{{ user?.phone }}</span>
+                <span class="biller-details"
+                  >{{ user?.address?.address }},
+                  {{ user?.address?.thana?.name }},
+                  {{ user?.address?.district?.name }},
+                  {{ user?.address?.country?.name }}</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <mat-table [dataSource]="dataSource" class="table-section">
+        <!-- Image Column -->
+        <ng-container matColumnDef="image">
+          <mat-header-cell
+            class="table-header"
+            mat-header-cell
+            *matHeaderCellDef
+          ></mat-header-cell>
+          <mat-cell class="image" *matCellDef="let row">
+            <img
+              [src]="row.product?.image?.cover"
+              alt="Product Image"
+              height="100px"
+              width="120px"
+            />
+          </mat-cell>
+        </ng-container>
+
+        <!-- Product Description Column -->
+        <ng-container matColumnDef="productDescription">
+          <mat-header-cell mat-header-cell *matHeaderCellDef>
+            Product Description
+          </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <div fxLayout="column">
+              <span>{{ row.product?.name }}</span>
+            </div>
+          </mat-cell>
+        </ng-container>
+
+        <!-- Unit Price Column -->
+        <ng-container matColumnDef="unitPrice">
+          <mat-header-cell mat-header-cell *matHeaderCellDef>
+            Unit Price
+          </mat-header-cell>
+          <mat-cell
+            style="padding: 0 0 0 1rem"
+            *matCellDef="let row"
+            class="price"
+            >{{ row.product?.price }}</mat-cell
+          >
+        </ng-container>
+
+        <!-- Quantity Column -->
+        <ng-container matColumnDef="quantity">
+          <mat-header-cell mat-header-cell *matHeaderCellDef>
+            Quantity
+          </mat-header-cell>
+          <mat-cell *matCellDef="let row">{{ row.quantity }}</mat-cell>
+        </ng-container>
+
+        <!-- Sub Total Column -->
+        <ng-container matColumnDef="subTotal">
+          <mat-header-cell mat-header-cell *matHeaderCellDef>
+            Sub Total
+          </mat-header-cell>
+          <mat-cell *matCellDef="let row">{{
+            row.product?.price * row.quantity
+          }}</mat-cell>
+        </ng-container>
+
+        <!-- Button Column -->
+        <ng-container matColumnDef="button">
+          <mat-header-cell mat-header-cell *matHeaderCellDef></mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <button mat-button class="return-button">
+              <span class="btn-text">Return</span>
+            </button>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+      </mat-table>
+
+      <div class="footer" fxLayout="row" fxLayoutAlign="space-between center">
+        <div>
+          <span class="star">**</span>
+          <span
+            >You will be able to return the product/Order after 48 Hours</span
+          >
+        </div>
+        <a class="footer-return">Return All</a>
+      </div>
+    </mat-card>
+  </div>
+</div>

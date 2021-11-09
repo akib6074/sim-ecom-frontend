@@ -1,0 +1,11 @@
+<svg height="48" viewBox="0 0 48 48" width="48" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="clip-menu">
+      <rect height="48" width="48"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#clip-menu)" id="menu">
+    <path d="M0,0V6H48V0ZM0,17.82v6H48v-6Zm0,18v6H48v-6Z" data-name="Icon open-menu" fill="#fff"
+          id="Icon_open-menu" transform="translate(0 3.462)"/>
+  </g>
+</svg>
